@@ -45,11 +45,15 @@ export default function Registration({ title, description }) {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto p-6 bg-white/90 rounded shadow-md">
-      <h2 className="text-3xl font-bold mb-2">{title}</h2>
-      <p className="text-sm mb-6">{description}</p>
+    <div className="w-full max-w-sm sm:max-w-md mx-auto p-4 sm:p-6 bg-white/90 dark:bg-gray-800/25 rounded shadow-md">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+        {title}
+      </h2>
+      <p className="text-xs sm:text-sm mb-6 text-gray-600 dark:text-gray-300">
+        {description}
+      </p>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4">
           <Input
             type="text"
             name="fname"
@@ -78,7 +82,7 @@ export default function Registration({ title, description }) {
           onChange={handleChange}
           required
         />
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4">
           <Input
             type="password"
             name="password"
