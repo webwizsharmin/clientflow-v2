@@ -1,5 +1,5 @@
-import Input from "../Input";
-import Button from "../Button";
+import Input from "../ui/Input";
+import Button from "../ui/Button";
 import { useState } from "react";
 
 export default function Registration({ title, description }) {
