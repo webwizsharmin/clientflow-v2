@@ -63,9 +63,24 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
+  const resetAuth = () => {
+    localStorage.removeItem("clientflow-user");
+    localStorage.removeItem("clientflow-session");
+    setRegisteredUser(null);
+    setUser(null);
+  };
+
   return (
     <AuthContext.Provider
-      value={{ user, registeredUser, isRegistered, login, register, logout }}
+      value={{
+        user,
+        registeredUser,
+        isRegistered,
+        login,
+        register,
+        logout,
+        resetAuth,
+      }}
     >
       {children}
     </AuthContext.Provider>
