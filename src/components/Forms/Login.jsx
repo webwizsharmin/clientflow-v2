@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
+import { AuthContext } from "../../context/authContext";
+import { useNavigate } from "react-router-dom";
 
-export default function LoginForm({ title, onSubmit }) {
+export default function LoginForm() {
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -28,7 +33,12 @@ export default function LoginForm({ title, onSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      onSubmit(alert("Login success!"));
+      const success = login(email, password);
+      if (success) {
+        navigate("/dashboard");
+      } else {
+        alert("Login failed");
+      }
     }
   };
 
@@ -37,7 +47,7 @@ export default function LoginForm({ title, onSubmit }) {
       className="bg-white/80 w-full max-w-sm  mx-auto rounded shadow-md p-6"
       onSubmit={handleSubmit}
     >
-      <h2 className="text-2xl font-bold mb-2">{title}</h2>
+      <h2 className="text-2xl font-bold mb-2">Login</h2>
 
       <Input
         type="email"

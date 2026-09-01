@@ -1,8 +1,13 @@
 import Input from "../ui/Input";
 import Button from "../ui/Button";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/authContext";
 
 export default function Registration({ title, description }) {
+  const { register } = useContext(AuthContext);
+  const Navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     fname: "",
     lname: "",
@@ -41,7 +46,15 @@ export default function Registration({ title, description }) {
       return;
     }
     setError("");
-    alert("Form submitted successfully!");
+
+    // Call register from AuthContext
+    const success = register(formData.email, formData.password);
+
+    if (success) {
+      Navigate("/dashboard");
+    } else {
+      setError("Registration failed. Please try again.");
+    }
   };
 
   return (
