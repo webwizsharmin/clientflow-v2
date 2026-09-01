@@ -1,13 +1,14 @@
 const Input = ({
   type = "text",
+  name,
   label,
   placeholder,
   value,
-  onchange,
+  onChange,
   error,
   required = false,
 }) => {
-  const id = label.toLowerCase().replace(/\s+/g, "-");
+  const id = label ? label.toLowerCase().replace(/\s+/g, "-") : name;
 
   return (
     <div className="mb-4">
@@ -23,10 +24,11 @@ const Input = ({
 
       <input
         id={id}
+        name={name}
         type={type}
         placeholder={placeholder}
         value={value}
-        onchange={onchange}
+        onChange={onChange}
         required={required}
         className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 ${error ? "border-red-500" : "border-gray-300"}`}
       />

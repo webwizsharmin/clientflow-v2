@@ -1,13 +1,47 @@
-import { Button } from "./components/ui";
-function App() {
-  return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-4">Hello Clientflow!</h1>
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import ProtectedRoute from "./routes/protectedRoute";
+import Dashboard from "./layouts/Dashboad";
+import LoginForm from "./components/Forms/Login";
+import { Registration } from "./components/Forms";
+import { useContext } from "react";
+import { AuthContext } from "./context/authContext";
 
-      <Button variant="primary" fullWidth>
-        Save Client
-      </Button>
-    </div>
+function App() {
+  const { user, isRegistered } = useContext(AuthContext);
+  return (
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            user ? (
+              <Navigate to="/dashboard" replace />
+            ) : isRegistered ? (
+              <Navigate to="/login" replace />
+            ) : (
+              <Navigate to="/registration" replace />
+            )
+          }
+        />
+
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/registration" element={<Registration />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
