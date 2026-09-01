@@ -3,11 +3,15 @@ import { Navigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 
 const ProtectedRoute = ({ children }) => {
-  const { user } = useContext(AuthContext);
+  const { user, isRegistered } = useContext(AuthContext);
 
   if (!user) {
-    // redirect to login if not authenticated
-    return <Navigate to="/login" replace />;
+    // If no active session, decide based on registration state
+    return isRegistered ? (
+      <Navigate to="/login" replace />
+    ) : (
+      <Navigate to="/registration" replace />
+    );
   }
 
   return children;
