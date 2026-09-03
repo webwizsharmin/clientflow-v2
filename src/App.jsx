@@ -5,7 +5,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import ProtectedRoute from "./routes/protectedRoute";
-import Dashboard from "./layouts/Dashboad";
+import Dashboard from "./pages/Dashboad";
 import LoginForm from "./components/Forms/Login";
 import { Registration } from "./components/Forms";
 import { useContext } from "react";
