@@ -1,11 +1,11 @@
+import { getClients, saveClients } from "./storageService";
+
 /**
  * Validate the data required to create/update a client
  *
  * This function belongs here rather than inside a component
  * because business rules should depend on the UI
  */
-
-import { getClients, saveClients } from "./storageService";
 
 const validateClient = (clientData) => {
   const errors = {};
