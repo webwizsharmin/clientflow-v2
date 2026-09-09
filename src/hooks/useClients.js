@@ -76,11 +76,11 @@ export const useClients = () => {
       const updatedClient = updateClientService(clientId, clientData);
 
       // Replace the matching client in the React state
-      setClients((currentClients) => {
+      setClients((currentClients) =>
         currentClients.map((client) =>
           client.id === clientId ? updatedClient : client,
-        );
-      });
+        ),
+      );
 
       return updatedClient;
     } catch (error) {
