@@ -1,4 +1,4 @@
-const ClientTable = ({ clients, onEdit, onDelete }) => {
+const ClientTable = ({ clients = [], onEdit, onDelete }) => {
   if (clients.length === 0) {
     return <p>No clients found.</p>;
   }

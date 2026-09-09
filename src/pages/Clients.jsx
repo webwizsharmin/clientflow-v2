@@ -65,7 +65,7 @@ const Clients = () => {
       {error && <p>{error.message || error}</p>}
 
       <ClientTable
-        client={clients}
+        clients={clients}
         onEdit={handleEditClick}
         onDelete={deleteClient}
       />
