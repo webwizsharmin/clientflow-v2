@@ -10,6 +10,7 @@ import LoginForm from "./components/Forms/Login";
 import { Registration } from "./components/Forms";
 import { useContext } from "react";
 import { AuthContext } from "./context/authContext";
+import Clients from "./pages/clients";
 
 function App() {
   const { user, isRegistered } = useContext(AuthContext);
@@ -37,6 +38,15 @@ function App() {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/clients"
+          element={
+            <ProtectedRoute>
+              <Clients />
             </ProtectedRoute>
           }
         />
