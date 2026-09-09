@@ -79,7 +79,7 @@ export const createClient = (clientData) => {
   const now = new Date().toISOString();
 
   const newClient = {
-    id: `client_${crypto.randomUUID}`,
+    id: `client_${crypto.randomUUID()}`,
 
     name: clientData.name.trim(),
     email: clientData.email.trim(),
@@ -149,9 +149,9 @@ export const updateClient = (clientId, clientData) => {
   };
 
   // 5. Create a new array
-  const updatedClients = clients.map((client) => {
-    client.id === clientId ? updateClient : client;
-  });
+  const updatedClients = clients.map((client) =>
+    client.id === clientId ? updateClient : client,
+  );
 
   // 6. Persist
   saveClients(updatedClients);
