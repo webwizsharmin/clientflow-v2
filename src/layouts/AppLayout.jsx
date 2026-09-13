@@ -1,10 +1,9 @@
 import Sidebar from "../components/layout/Sidebar";
 import Topbar from "../components/layout/Topbar";
-import MainContent from "./MainContent";
 
 const AppLayout = ({ children }) => {
   return (
-    <div className="flex h-screen bg-gray-50 dark:bg-gray-950">
+    <div className="flex h-screen w-screen bg-gray-50 dark:bg-gray-950 ">
       {/* Sidebar */}
       <Sidebar />
 
@@ -13,7 +12,7 @@ const AppLayout = ({ children }) => {
         <Topbar />
 
         {/* Main content area */}
-        <MainContent>{children}</MainContent>
+        <main className="flex-1 overflow-y-auto p-6">{children}</main>
       </div>
     </div>
   );

@@ -91,9 +91,9 @@ const Clients = () => {
 
   // Page
   return (
-    <section className="p-6 space-y-8">
+    <section className="space-y-4">
       <header className="flex items-center justify-between">
-        <h1 className="text-4xl font-bold text-slate-800 dark:text-slate-300">
+        <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-300">
           Clients
         </h1>
         <Button variant="primary" onClick={handleAddClick}>
