@@ -7,12 +7,26 @@ import {
   UserCircle,
   SidebarRight,
 } from "@boxicons/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { NavLink } from "react-router-dom";
 
 export default function Sidebar({ isOpen, onClose }) {
   const [collapsed, setCollapsed] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 786) {
+        setCollapsed(true);
+      } else {
+        setCollapsed(false);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const linkStyles = ({ isActive }) =>
     `flex item-center space-x-2 p-2 rounded-lg transition-colors ${isActive ? "bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 font-medium" : "hover:bg-gray-100 dark:hover:bg-gray-700 text-slate-700 dark:text-slate-200"}`;
   return (
