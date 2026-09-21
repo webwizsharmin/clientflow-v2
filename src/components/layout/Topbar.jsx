@@ -4,7 +4,9 @@ import Searchbar from "./Searchbar";
 export default function Topbar() {
   return (
     <header className="h-16 bg-white dark:bg-gray-900 shadow px-6 flex items-center justify-between">
-      <Searchbar />
+      <div className="flex items-center gap-2">
+        <Searchbar />
+      </div>
 
       <nav
         aria-label="User controls"
