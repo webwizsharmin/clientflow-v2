@@ -7,32 +7,16 @@ import {
   UserCircle,
   SidebarRight,
 } from "@boxicons/react";
-import { useEffect, useState } from "react";
 
 import { NavLink } from "react-router-dom";
 
-export default function Sidebar({ isOpen, onClose }) {
-  const [collapsed, setCollapsed] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 786) {
-        setCollapsed(true);
-      } else {
-        setCollapsed(false);
-      }
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
+export default function Sidebar({ collapsed, setCollapsed }) {
   const linkStyles = ({ isActive }) =>
-    `flex item-center space-x-2 p-2 rounded-lg transition-colors ${isActive ? "bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 font-medium" : "hover:bg-gray-100 dark:hover:bg-gray-700 text-slate-700 dark:text-slate-200"}`;
+    `flex items-center space-x-2 p-2 rounded-lg transition-colors ${isActive ? "bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 font-medium" : "hover:bg-gray-100 dark:hover:bg-gray-700 text-slate-700 dark:text-slate-200"}`;
   return (
     <aside
       aria-label="Sidebar navigation"
-      className={`fixed inset-y-0 left-0 z-50 ${collapsed ? "w-20" : "w-64"} h-full shrink-0 bg-white dark:bg-gray-800 shadow-md flex flex-col justify-between overflow-y-auto transition-all duration-300 ease-in-out md:static md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
+      className={`bg-white dark:bg-gray-800 shadow-md flex flex-col justify-between overflow-y-auto transition-all duration-300 ease-in-out ${collapsed ? "w-20" : "w-64"} shrink-0`}
     >
       <div>
         {/* Branding */}
@@ -48,37 +32,37 @@ export default function Sidebar({ isOpen, onClose }) {
         <nav className="p-2">
           <ul className="space-y-1">
             <li>
-              <NavLink to="/dashboard" className={linkStyles} onClick={onClose}>
+              <NavLink to="/dashboard" className={linkStyles}>
                 <Dashboard />
                 {!collapsed && <span>Dashboard</span>}
               </NavLink>
             </li>
             <li>
-              <NavLink to="/clients" className={linkStyles} onClick={onClose}>
+              <NavLink to="/clients" className={linkStyles}>
                 <User />
                 {!collapsed && <span>Clients</span>}
               </NavLink>
             </li>
             <li>
-              <NavLink to="/invoices" className={linkStyles} onClick={onClose}>
+              <NavLink to="/invoices" className={linkStyles}>
                 <i className="bx bxs-spreadsheet text-xl"></i>
                 {!collapsed && <span>Invoices</span>}
               </NavLink>
             </li>
             <li>
-              <NavLink to="/tasks" className={linkStyles} onClick={onClose}>
+              <NavLink to="/tasks" className={linkStyles}>
                 <Task />
                 {!collapsed && <span>Tasks</span>}
               </NavLink>
             </li>
             <li>
-              <NavLink to="/settings" className={linkStyles} onClick={onClose}>
+              <NavLink to="/settings" className={linkStyles}>
                 <Cog />
                 {!collapsed && <span>Settings</span>}
               </NavLink>
             </li>
             <li>
-              <NavLink to="/help" className={linkStyles} onClick={onClose}>
+              <NavLink to="/help" className={linkStyles}>
                 <HelpCircle />
                 {!collapsed && <span>Help & Support</span>}
               </NavLink>
@@ -88,7 +72,7 @@ export default function Sidebar({ isOpen, onClose }) {
       </div>
 
       {/* User Profile */}
-      <div className="flex items-center border-t  text-gray-800 dark:text-gray-100 border-gray-100 dark:border-gray-700 space-x-2 p-4">
+      <div className="flex items-center border-t text-gray-800 dark:text-gray-100 border-gray-100 dark:border-gray-700 space-x-2 p-4">
         <UserCircle />
 
         {!collapsed && (
@@ -99,7 +83,7 @@ export default function Sidebar({ isOpen, onClose }) {
         )}
 
         <NavLink
-          href="/logout"
+          to="/logout"
           className="ml-auto text-slate-400 hover:text-slate-600"
         >
           {!collapsed && <i className="bx bx-log-out text-xl"></i>}
