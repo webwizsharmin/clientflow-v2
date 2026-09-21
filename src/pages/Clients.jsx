@@ -91,7 +91,7 @@ const Clients = () => {
 
   // Page
   return (
-    <section className="space-y-4">
+    <section className="space-y-6">
       <header className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-300">
           Clients
@@ -102,7 +102,7 @@ const Clients = () => {
       </header>
 
       {/* Stat Cards */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
           icon={User}
           title="Total Clients"
@@ -143,7 +143,7 @@ const Clients = () => {
           placeholder="Search by name or email..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full sm:w-1/2 px-3 py-2 border rounded-md shadow-sm bg-white dark:bg-slate-900 border-gray-300 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="flex-1 px-3 py-2 border rounded-md shadow-sm bg-white dark:bg-slate-900 border-gray-300 dark:border-slate-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
         />
         <select
           value={statusFilter}
