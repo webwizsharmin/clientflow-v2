@@ -13,6 +13,8 @@ import {
   updateClient as updateClientService,
   deleteClient as deleteClientService,
 } from "../services/clientService";
+import { saveClients } from "../services/storageService";
+import { mockClients } from "../data/mockClients";
 
 export const useClients = () => {
   // React state
@@ -26,7 +28,13 @@ export const useClients = () => {
       setLoading(true);
       setError(null);
 
-      const storedClients = getAllClients();
+      let storedClients = getAllClients();
+
+      // Seed if empty
+      if (storedClients.length === 0) {
+        saveClients(mockClients);
+        storedClients = mockClients;
+      }
 
       setClients(storedClients);
     } catch (error) {
