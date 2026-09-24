@@ -9,6 +9,7 @@ import {
   ArrowTrendingDownIcon,
 } from "@heroicons/react/24/solid";
 import RevenueChart from "../components/charts/RevenueChart";
+import TasksChart from "../components/charts/TasksCharts";
 
 export default function Dashboard() {
   const { logout, resetAuth } = useContext(AuthContext);
@@ -82,8 +83,8 @@ export default function Dashboard() {
             Tasks Progress
           </h2>
 
-          <div className="h-64 flex items-center justify-center text-gray-400 dark:text-gray-500">
-            {/* Chart placeholder */}
+          <div className="h-64">
+            <TasksChart />
           </div>
         </div>
       </div>
