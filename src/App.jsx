@@ -9,8 +9,8 @@ import Dashboard from "./pages/Dashboad";
 import LoginForm from "./components/Forms/Login";
 import { Registration } from "./components/Forms";
 import { useContext } from "react";
-import { AuthContext } from "./context/authContext";
-import Clients from "./pages/clients";
+import { AuthContext } from "./context/AuthContext";
+import Clients from "./pages/Clients";
 import DashboardLayout from "./layouts/DashboardLayout";
 
 function App() {
