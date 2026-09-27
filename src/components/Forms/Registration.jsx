@@ -2,7 +2,7 @@ import Input from "../ui/Input";
 import Button from "../ui/Button";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Registration({ title, description }) {
   const { register } = useContext(AuthContext);

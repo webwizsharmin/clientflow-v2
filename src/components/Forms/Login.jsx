@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
