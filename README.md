@@ -82,7 +82,7 @@ npm run dev
 ## Deployment
 
 Clientfow-v2 is deployed via vercel for live demo access.
-**Live Demo:**
+**Live Demo:** https://clientflow-v2-1sgq.vercel.app/
 
 ---
 
