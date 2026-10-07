@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    // Environment
+    "target": "esnext",
+    "module": "nodenext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+
+    // Node type (for vite.config.ts)
+    "types": ["node"],
+
+    // Output control
+    "sourceMap": true,
+    "declaration": false,
+    "declarationMap": false,
+    "noEmit": true,
+
+    // Type checking
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // JSX
+    "jsx": "react-jsx",
+
+    // Module resolution
+    "moduleResolution": "nodenext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+
+    // Style / safety
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+
+  "include": ["src", "vite.config.ts"],
+  "exclude": ["node_modules", "dist"]
+}
