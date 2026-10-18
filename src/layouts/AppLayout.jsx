@@ -18,12 +18,12 @@ const AppLayout = ({ children }) => {
   }, []);
 
   return (
-    <div className="flex h-screen w-screen bg-gray-50 dark:bg-gray-950 ">
+    <div className="flex min-h-screen w-full bg-gray-50 dark:bg-gray-950 ">
       {/* Sidebar */}
       <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
 
       {/* Right Side: Topbar + MainContent */}
-      <div className="flex flex-col flex-1">
+      <div className="flex flex-col min-w-0 flex-1">
         <Topbar />
 
         {/* Main content area */}
