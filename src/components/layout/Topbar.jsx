@@ -4,13 +4,13 @@ import Searchbar from "./Searchbar";
 export default function Topbar() {
   return (
     <header className="h-16 bg-white dark:bg-gray-900 shadow px-6 flex items-center justify-between">
-      <div className="flex items-center gap-2">
+      <div className="min-w-0 flex-1">
         <Searchbar />
       </div>
 
       <nav
         aria-label="User controls"
-        className="flex items-center gap-x-4 text-slate-700 dark:text-slate-200"
+        className="min-w-0 flex-1 flex items-center gap-x-4 text-slate-700 dark:text-slate-200"
       >
         <button type="button" aria-label="Notifications" className="icon-btn">
           <Bell className="text-xl" />
