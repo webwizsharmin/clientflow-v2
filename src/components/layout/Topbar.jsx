@@ -10,7 +10,7 @@ export default function Topbar() {
 
       <nav
         aria-label="User controls"
-        className="min-w-0 flex-1 flex items-center gap-x-4 text-slate-700 dark:text-slate-200"
+        className="min-w-0 flex-1 flex items-center justify-end gap-x-4 text-slate-700 dark:text-slate-200"
       >
         <button type="button" aria-label="Notifications" className="icon-btn">
           <Bell className="text-xl" />

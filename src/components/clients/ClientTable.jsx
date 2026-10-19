@@ -14,12 +14,12 @@ const ClientTable = ({ clients = [], onEdit, onDelete, onView }) => {
             <th className="px-2 py-1 text-left sm:px-4 sm:py-2 hidden md:table-cell">
               Email
             </th>
-            <th className="px-4 py-2 text-left hidden md:table-cell">Mobile</th>
+            <th className="px-4 py-2 text-left hidden lg:table-cell">Mobile</th>
             <th className="px-4 py-2 text-left hidden md:table-cell">
               Company
             </th>
             <th className="px-4 py-2 text-left">Status</th>
-            <th className="px-4 py-2 text-left hidden md:table-cell">Notes</th>
+            <th className="px-4 py-2 text-left hidden lg:table-cell">Notes</th>
             <th className="px-4 py-2 text-left">Actions</th>
           </tr>
         </thead>
@@ -32,12 +32,12 @@ const ClientTable = ({ clients = [], onEdit, onDelete, onView }) => {
             >
               <td className="px-4 py-2">{client.name}</td>
               <td className="px-4 py-2 hidden md:table-cell">{client.email}</td>
-              <td className="px-4 py-2 hidden md:table-cell">{client.phone}</td>
+              <td className="px-4 py-2 hidden lg:table-cell">{client.phone}</td>
               <td className="px-4 py-2 hidden md:table-cell">
                 {client.company}
               </td>
               <td className="px-4 py-2">{client.status}</td>
-              <td className="px-4 py-2 hidden md:table-cell">{client.notes}</td>
+              <td className="px-4 py-2 hidden lg:table-cell">{client.notes}</td>
 
               <td className="px-4 py-2 flex gap-2">
                 <Button
