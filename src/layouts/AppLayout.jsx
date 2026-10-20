@@ -23,13 +23,15 @@ const AppLayout = ({ children }) => {
       <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
 
       {/* Right Side: Topbar + MainContent */}
-      <div className="flex flex-col min-w-0 flex-1">
+      <div
+        className={`flex flex-col min-w-0 flex-1 ${collapsed ? "ml-20" : "ml-64"}`}
+      >
         <Topbar />
 
         {/* Main content area */}
         <main
           className={`flex-1 overflow-y-auto p-6 transition-all duration-300 ease-in-out
-          ${collapsed ? "" : "ml-0"}  `}
+          `}
         >
           {children}
         </main>
