@@ -16,7 +16,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
   return (
     <aside
       aria-label="Sidebar navigation"
-      className={`bg-white dark:bg-gray-800 shadow-md flex flex-col justify-between overflow-y-auto transition-all duration-300 ease-in-out ${collapsed ? "w-20" : "w-64"} shrink-0`}
+      className={`fixed h-screen top-0 left-0 z-50 bg-white dark:bg-gray-800 shadow-md flex flex-col justify-between transition-all duration-300 ease-in-out ${collapsed ? "w-20" : "w-64"} shrink-0`}
     >
       <div>
         {/* Branding */}

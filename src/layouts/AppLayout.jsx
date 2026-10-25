@@ -4,12 +4,16 @@ import Topbar from "../components/layout/Topbar";
 
 const AppLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Force collapsed on small screens
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
         setCollapsed(true); // always collapsed on sm
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
       }
     };
     handleResize(); // run once on mount
@@ -20,16 +24,22 @@ const AppLayout = ({ children }) => {
   return (
     <div className="flex min-h-screen w-full bg-gray-50 dark:bg-gray-950 ">
       {/* Sidebar */}
-      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
+      <Sidebar
+        collapsed={collapsed}
+        setCollapsed={setCollapsed}
+        isMobile={isMobile}
+        setIsMobile={setIsMobile}
+      />
 
       {/* Right Side: Topbar + MainContent */}
-      <div className="flex flex-col min-w-0 flex-1">
+      <div
+        className={`flex flex-col min-w-0 flex-1 ${collapsed ? "ml-20" : "ml-64"}`}
+      >
         <Topbar />
 
         {/* Main content area */}
         <main
-          className={`flex-1 overflow-y-auto p-6 transition-all duration-300 ease-in-out
-          ${collapsed ? "" : "ml-0"}  `}
+          className={`flex-1 overflow-y-auto p-6 transition-all duration-300 ease-in-out`}
         >
           {children}
         </main>
