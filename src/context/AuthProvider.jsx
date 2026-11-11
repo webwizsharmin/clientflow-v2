@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AuthContext } from "./AuthContext";
+import { demoUser } from "../data/demo/demoUser";
 
 export const AuthProvider = ({ children }) => {
   // Track the registered account (persisted in localStorage)
@@ -21,6 +22,9 @@ export const AuthProvider = ({ children }) => {
       return null;
     }
   });
+
+  const isDemoMode = user?.isDemo === true;
+  const isAuthicated = Boolean(user && !isDemoMode);
 
   // Check if a user is registered
   const isRegistered = !!registeredUser;
@@ -63,6 +67,21 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
+  // Create demo Mode
+  const enterDemoMode = () => {
+    setUser(demoUser);
+
+    localStorage.setItem("clientflow-session", JSON.stringify(demoUser));
+  };
+
+  // Exit Demo Mode
+  const exitDemoMode = () => {
+    if (!isDemoMode) return;
+    setUser(null);
+
+    localStorage.removeItem("clientflow-session");
+  };
+
   const resetAuth = () => {
     localStorage.removeItem("clientflow-user");
     localStorage.removeItem("clientflow-session");
@@ -80,6 +99,10 @@ export const AuthProvider = ({ children }) => {
         register,
         logout,
         resetAuth,
+        isDemoMode,
+        isAuthicated,
+        enterDemoMode,
+        exitDemoMode,
       }}
     >
       {children}
