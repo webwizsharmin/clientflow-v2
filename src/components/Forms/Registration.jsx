@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 export default function Registration({ title, description }) {
-  const { register } = useContext(AuthContext);
+  const { register, enterDemoMode } = useContext(AuthContext);
   const Navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -34,7 +34,7 @@ export default function Registration({ title, description }) {
       return "Password must be at least 6 characters";
     if (formData.password !== formData.cpassword)
       return "Passwords do not match";
-    if (!formData.terms) return "You must accept the terms";
+    if (!formData.terms) return "You must accept the terms and conditions";
     return null;
   };
 
@@ -55,6 +55,15 @@ export default function Registration({ title, description }) {
     } else {
       setError("Registration failed. Please try again.");
     }
+  };
+
+  // Demo Access Handler
+  const handleDemoAccess = () => {
+    setError("");
+
+    enterDemoMode();
+
+    Navigate("/dashboard", { replace: true });
   };
 
   return (
@@ -143,6 +152,26 @@ export default function Registration({ title, description }) {
               Sign Up
             </Button>
           </form>
+
+          {/* Demo Access */}
+          <div className="my-4 flex items-center gap-3">
+            <div className="flex-1 border-t border-gray-300 dark:border-gray-700"></div>
+            <span className="text-xs text-gray-500">OR</span>
+            <div className="flex-1 border-t border-gray-300 dark:border-gray-700"></div>
+          </div>
+
+          <Button
+            type="button"
+            fullWidth
+            onClick={handleDemoAccess}
+            className="bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-semibold rounded-md transition-colors duration-200"
+          >
+            Explore Demo
+          </Button>
+
+          <p className=" my-2 text-center text-sm text-gray-400">
+            Explore clientflow without creating an account.
+          </p>
         </div>
       </div>
     </div>
